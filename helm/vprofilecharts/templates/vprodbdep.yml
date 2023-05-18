@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: vprodb
-        image: wanderingmono/vprofiledb:V1
+        image: imranvisualpath/vprdbfix
         ports:
         - name: vprodb-port
           containerPort: 3306
