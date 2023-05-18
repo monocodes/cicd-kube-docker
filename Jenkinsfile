@@ -99,6 +99,10 @@ pipeline {
         stage ('Kubernetes Deploy') {
             agent {label 'KOPS'}
             steps {
+                // sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"
+
+                // it will not work, because it's impossible to build Vprofileapp artifact correctly as of 05.2023 (Bad handshake mysql error)
+                
                 sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=imranvisualpath/vproappdock:9 --namespace prod"
             }
         }
