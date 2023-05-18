@@ -99,6 +99,7 @@ pipeline {
         stage ('Kubernetes Deploy') {
             agent {label 'KOPS'}
             steps {
+                sh "PATH=$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin"
                 sh "helm upgrade --install --force vprofile-stack helm/vprofilecharts --set appimage=${registry}:V${BUILD_NUMBER} --namespace prod"
             }
         }
